@@ -4,7 +4,6 @@ import React from 'react'
 
 type Props = {
 	className?: string
-
 }
 
 export const TopBar: React.FC<Props> = ({ className }) => {
