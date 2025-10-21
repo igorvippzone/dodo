@@ -2,7 +2,7 @@
 import { Title } from '@/components/shared/title'
 import { FilterCheckbox, FilterCheckboxProps } from './filter-checkbox'
 import { cn } from '@/lib/utils'
-import React, { ChangeEvent, ChangeEventHandler, useState } from 'react'
+import React, { ChangeEvent, useState } from 'react'
 import { Input } from '@/components/ui'
 
 type Item = FilterCheckboxProps
