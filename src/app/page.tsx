@@ -1,7 +1,5 @@
-import { Categories, Container, Filters, SortPopup, Title, TopBar } from '@/components/shared'
-import { ProductCard } from '@/components/shared/product-card'
+import { Container, Filters, Title, TopBar } from '@/components/shared'
 import { ProductsGroupList } from '@/components/shared/products-group-list'
-import { Button } from '@/components/ui/button'
 
 export default function Home() {
   return (

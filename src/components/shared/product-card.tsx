@@ -14,7 +14,7 @@ type Props = {
 	imageUrl: string
 }
 
-export const ProductCard: React.FC<Props> = ({ className, imageUrl, id, name, price }) => {
+export const ProductCard: React.FC<Props> = ({ className, id, name, price }) => {
 	return (
 		<div className={cn('', className)}>
 			<Link href={`/product/${id}`}>
