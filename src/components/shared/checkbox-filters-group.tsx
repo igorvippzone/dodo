@@ -23,8 +23,6 @@ export const CheckboxFiltersGroup: React.FC<Props> = ({
 	title,
 	items,
 	defaultItems,
-	onChange,
-	defaultValue,
 	limit = 5,
 	searchInputPlaceholder = "Поиск...",
 }) => {
