@@ -1,4 +1,7 @@
 {
 	"editor.defaultFormatter": null,
-	"eslint.format.enable": true
+	"eslint.format.enable": true,
+	"cSpell.words": [
+		"autoincrement"
+	]
 }
