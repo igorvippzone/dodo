@@ -137,5 +137,24 @@ html {
   }
 }
 
+@layer utilities {
+  .scrollbar::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+  .scrollbar::-webkit-scrollbar-track {
+    border-radius: 100vh;
+    background: transparent;
+  }
+  .scrollbar::-webkit-scrollbar-thumb {
+    background-color: var(--color-neutral-200);
+    border-radius: 100vh;
+  }
+  .scrollbar::-webkit-scrollbar-thumb:hover {
+    background-color:  var(--color-neutral-400);
+
+
+  }
+}
 /* Dark mode */
 @custom-variant dark (&:where(.dark, .dark *));
