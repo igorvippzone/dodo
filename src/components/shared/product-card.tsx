@@ -15,15 +15,16 @@ type Props = {
 	imageUrl: string
 }
 
-export const ProductCard: React.FC<Props> = ({ className, id, name, price }) => {
+export const ProductCard: React.FC<Props> = ({ className, id, name, price, imageUrl }) => {
 	return (
 		<div className={cn('', className)}>
 			<Link href={`/product/${id}`}>
 				<div className='flex justify-center p-6 bg-secondary rounded-b-lg h-[260px]'>
 					<Image
 						alt={name}
+						className='object-contain'
 						height={215}
-						src={"./globe.svg"}
+						src={imageUrl}
 						width={215}
 					/>
 				</div>
