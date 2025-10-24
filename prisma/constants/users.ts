@@ -1,5 +1,7 @@
 import { hashSync } from 'bcrypt'
+
 import { Prisma } from "@/generated/prisma"
+
 export const users: Prisma.UserCreateInput[] = [
 	{
 		fullName: "User",

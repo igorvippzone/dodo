@@ -1,5 +1,6 @@
-import { Checkbox } from '../ui'
 import React from 'react'
+
+import { Checkbox } from '../ui'
 
 export interface FilterCheckboxProps {
 	label: string
@@ -22,13 +23,13 @@ export const FilterCheckbox: React.FC<FilterCheckboxProps> = ({
 	return (
 		<div className='flex items-center space-x-2'>
 			<Checkbox
-				onCheckedChange={onCheckedChange}
 				checked={checked}
-				value={value}
 				className='rounded-[8px] w-6 h-6'
 				id={id}
+				value={value}
+				onCheckedChange={onCheckedChange}
 			/>
-			<label htmlFor={id} className='loading-none cursor-pointer flex-1'>
+			<label className='loading-none cursor-pointer flex-1' htmlFor={id}>
 				{label}
 			</label>
 			{endAdornment}
