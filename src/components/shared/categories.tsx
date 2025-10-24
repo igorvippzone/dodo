@@ -1,8 +1,9 @@
 'use client'
 
+import React from 'react'
+
 import { cn } from '@/lib/utils'
 import { useCategoryStore } from '@/store/category'
-import React from 'react'
 
 type Props = {
 	className?: string
@@ -29,7 +30,8 @@ export const Categories: React.FC<Props> = ({ className }) => {
 					className={cn(
 						'flex items-center font-bold h-11 rounded-2xl px-5',
 						categoryActiveId === id && 'bg-white shadow-md shadow-gray-200 text-primary'
-					)}>
+					)}
+				>
 					<button>{name}</button>
 				</a>
 			))}

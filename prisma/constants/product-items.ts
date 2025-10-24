@@ -1,5 +1,7 @@
 import { Prisma } from '@/generated/prisma'
+
 import { products } from './products'
+
 const randomNumber = (min: number = 190, max: number = 600) => {
 	return Math.floor(Math.random() * (max - min) * 10 + min * 10) / 10
 }

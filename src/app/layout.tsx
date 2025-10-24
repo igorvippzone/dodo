@@ -1,31 +1,34 @@
-import type { Metadata } from "next"
 import { Nunito } from "next/font/google"
-import "./globals.css"
+
 import { Header } from '@/components/shared/header'
 
+import type { Metadata } from "next"
+
+import "./globals.css"
+
 const nunitoFont = Nunito({
-  subsets: ["cyrillic"],
-  variable: "--font-nunito",
-  weight: ['400', '500', '600', '700', '800', '900']
+	subsets: ["cyrillic"],
+	variable: "--font-nunito",
+	weight: ['400', '500', '600', '700', '800', '900']
 })
 
 export const metadata: Metadata = {
-  title: "DoDo",
+	title: "DoDo",
 }
 
 export default function RootLayout({
-  children,
+	children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  return (
-    <html lang="en">
-      <body className={`${nunitoFont.className}`}>
-        <main className='min-h-screen'>
-          <Header />
-          {children}
-        </main>
-      </body>
-    </html>
-  )
+	return (
+		<html lang="en">
+			<body className={`${nunitoFont.className}`}>
+				<main className='min-h-screen'>
+					<Header />
+					{children}
+				</main>
+			</body>
+		</html>
+	)
 }

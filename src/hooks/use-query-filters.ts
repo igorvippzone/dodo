@@ -1,12 +1,13 @@
-import { Filters } from './use-filters'
-import { useRouter } from 'next/navigation'
 import qs from 'qs'
-import { useEffect } from 'react'
+import { useDebounce } from 'react-use'
+import { useRouter } from 'next/navigation'
+
+import { Filters } from './use-filters'
 
 export const useQueryFilters = (filters: Filters) => {
 	const router = useRouter()
 
-	useEffect(() => {
+	useDebounce(() => {
 		const params = {
 			priceFrom: filters.priceFrom,
 			priceTo: filters.priceTo,
@@ -18,7 +19,6 @@ export const useQueryFilters = (filters: Filters) => {
 			arrayFormat: 'comma'
 		})
 		router.push(`?${query}`, { scroll: false })
-		console.log()
 
-	}, [router, filters])
+	}, 500, [filters.pizzaTypes, filters.priceFrom, filters.priceTo, filters.selectedIngredients, filters.sizes, router])
 }

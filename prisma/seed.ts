@@ -1,7 +1,8 @@
-import cliProgress from "cli-progress"
 import chalk from 'chalk'
+import cliProgress from "cli-progress"
 
 import { PrismaClient } from "@/generated/prisma"
+
 import { carts, categories, ingredients, productItems, products, users } from './constants'
 
 const multibar = new cliProgress.MultiBar({

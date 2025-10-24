@@ -1,6 +1,6 @@
-import { useSearchParams } from 'next/navigation'
 import { useState } from 'react'
 import { useSet } from 'react-use'
+import { useSearchParams } from 'next/navigation'
 
 interface PriceRangeProps {
 	priceFrom?: number

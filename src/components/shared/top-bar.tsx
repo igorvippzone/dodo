@@ -1,6 +1,7 @@
-import { Categories, SortPopup, Container } from '@/components/shared'
-import { cn } from '@/lib/utils'
 import React from 'react'
+
+import { Categories, Container, SortPopup } from '@/components/shared'
+import { cn } from '@/lib/utils'
 
 type Props = {
 	className?: string
