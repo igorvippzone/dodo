@@ -1,11 +1,11 @@
-import qs from 'qs'
-import { useDebounce } from 'react-use'
-import { useRouter } from 'next/navigation'
+import qs from "qs";
+import { useDebounce } from "react-use";
+import { useRouter } from "next/navigation";
 
-import { Filters } from './use-filters'
+import { Filters } from "./use-filters";
 
 export const useQueryFilters = (filters: Filters) => {
-	const router = useRouter()
+	const router = useRouter();
 
 	useDebounce(() => {
 		const params = {
@@ -14,11 +14,11 @@ export const useQueryFilters = (filters: Filters) => {
 			pizzaTypes: Array.from(filters.pizzaTypes),
 			selectedIngredients: Array.from(filters.selectedIngredients),
 			sizes: Array.from(filters.sizes),
-		}
+		};
 		const query = qs.stringify(params, {
-			arrayFormat: 'comma'
-		})
-		router.push(`?${query}`, { scroll: false })
+			arrayFormat: "comma",
+		});
+		router.push(`?${query}`, { scroll: false });
 
-	}, 500, [filters.pizzaTypes, filters.priceFrom, filters.priceTo, filters.selectedIngredients, filters.sizes, router])
-}
+	}, 500, [filters.pizzaTypes, filters.priceFrom, filters.priceTo, filters.selectedIngredients, filters.sizes, router]);
+};

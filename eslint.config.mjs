@@ -1,16 +1,16 @@
-import { dirname } from "path"
-import { fileURLToPath } from "url"
+import { dirname } from "path";
+import { fileURLToPath } from "url";
 
-import { FlatCompat } from "@eslint/eslintrc"
-import reactPlugin from "eslint-plugin-react" // Плагин для React правил
-import unusedImports from "eslint-plugin-unused-imports" // Плагин для удаления неиспользуемых импортов
+import { FlatCompat } from "@eslint/eslintrc";
+import reactPlugin from "eslint-plugin-react"; // Плагин для React правил
+import unusedImports from "eslint-plugin-unused-imports"; // Плагин для удаления неиспользуемых импортов
 
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = dirname(__filename)
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const compat = new FlatCompat({
 	baseDirectory: __dirname,
-})
+});
 
 const eslintConfig = [
 	...compat.extends("next/core-web-vitals", "next/typescript"), // Базовые настройки Next.js
@@ -22,6 +22,30 @@ const eslintConfig = [
 		rules: {
 			"@next/next/no-img-element": "off", // Отключает предупреждение об использовании <img> вместо Next.js Image
 
+			"no-console": ["warn", {
+				allow: ["warn", "error"], // Разрешаем только console.warn и console.error
+			}],
+			"no-restricted-syntax": [
+				"warn",
+				{
+					selector: "CallExpression[callee.object.name='console'][callee.property.name=/^(log|debug|info|trace)$/]",
+					message: "Unexpected console statement. Use console.warn or console.error instead.",
+				},
+			],
+			"quotes": ["error", "double", {
+				"avoidEscape": true, // Разрешает одинарные кавычки, если строка содержит двойные
+				"allowTemplateLiterals": true, // Разрешает шаблонные строки (backticks)
+			}],
+			"jsx-quotes": ["error", "prefer-double"], // Двойные кавычки в JSX
+
+			"comma-dangle": ["error", {
+				"arrays": "always-multiline", // Всегда в многострочных массивах
+				"objects": "always-multiline", // Всегда в многострочных объектах
+				"imports": "always-multiline", // Всегда в многострочных импортах
+				"exports": "always-multiline", // Всегда в многострочных экспортах
+				"functions": "always-multiline", // Всегда в многострочных функциях
+			}],
+			semi: ["error", "always"],
 			// Правило сортировки атрибутов в JSX
 			"react/jsx-sort-props": ["error", {
 				callbacksLast: true, // Колбэки (onClick, onChange) в конце
@@ -46,21 +70,21 @@ const eslintConfig = [
 			"react/jsx-max-props-per-line": ["error", {
 				"maximum": {
 					"single": 2,    // Максимум 2 атрибута в одной строке
-					"multi": 1      // При переносе - по одному атрибуту на строку
-				}
+					"multi": 1,      // При переносе - по одному атрибуту на строку
+				},
 			}],
 
 			// Расположение закрывающей скобки
 			"react/jsx-closing-bracket-location": ["error", {
 				"selfClosing": "tag-aligned",  // Закрывающая скобка выравнивается по тегу для self-closing
-				"nonEmpty": "tag-aligned"      // Закрывающая скобка выравнивается по тегу для не-self-closing
+				"nonEmpty": "tag-aligned",      // Закрывающая скобка выравнивается по тегу для не-self-closing
 			}],
 
 			// Удаление множественных пустых строк
 			"no-multiple-empty-lines": ["error", {
 				"max": 1,       // Максимум 1 пустая строка подряд
 				"maxEOF": 1,    // Максимум 1 пустая строка в конце файла
-				"maxBOF": 0     // Не должно быть пустых строк в начале файла
+				"maxBOF": 0,     // Не должно быть пустых строк в начале файла
 			}],
 
 			// Запрет пустых строк между атрибутами JSX
@@ -77,7 +101,7 @@ const eslintConfig = [
 				"arrow": "parens-new-line", // Перенос для стрелочных функций
 				"condition": "parens-new-line", // Перенос для условий
 				"logical": "parens-new-line", // Перенос для логических выражений
-				"prop": "parens-new-line" // Перенос для пропсов
+				"prop": "parens-new-line", // Перенос для пропсов
 			}],
 
 			// Продвинутая сортировка импортов
@@ -91,56 +115,56 @@ const eslintConfig = [
 						["parent", "sibling"], // Относительные импорты из родительских и соседних директорий
 						"index",      // index файлы
 						"object",     // Импорты объектов
-						"type"        // Импорты типов
+						"type",        // Импорты типов
 					],
 					"pathGroups": [
 						{
 							"pattern": "react",
 							"group": "external",
-							"position": "before" // React перед другими external импортами
+							"position": "before", // React перед другими external импортами
 						},
 						{
 							"pattern": "next/**",
 							"group": "external",
-							"position": "after" // Next.js после других external импортов
+							"position": "after", // Next.js после других external импортов
 						},
 						{
 							"pattern": "@/**",
-							"group": "internal" // Алиас @/ как internal
+							"group": "internal", // Алиас @/ как internal
 						},
 						{
 							"pattern": "~/**",
-							"group": "internal" // Алиас ~/ как internal
+							"group": "internal", // Алиас ~/ как internal
 						},
 						{
 							"pattern": "@/components/**",
 							"group": "internal",
-							"position": "after" // components после других internal
+							"position": "after", // components после других internal
 						},
 						{
 							"pattern": "@/lib/**",
 							"group": "internal",
-							"position": "after" // lib после других internal
+							"position": "after", // lib после других internal
 						},
 						{
 							"pattern": "@/utils/**",
 							"group": "internal",
-							"position": "after" // utils после других internal
+							"position": "after", // utils после других internal
 						},
 						{
 							"pattern": "@/types/**",
 							"group": "internal",
-							"position": "after" // types после других internal
-						}
+							"position": "after", // types после других internal
+						},
 					],
 					"pathGroupsExcludedImportTypes": ["react", "type"], // Исключения для pathGroups
 					"newlines-between": "always", // Всегда добавлять пустые строки между группами
 					"alphabetize": {
 						"order": "asc", // Сортировка по возрастанию
-						"caseInsensitive": true // Без учета регистра
+						"caseInsensitive": true, // Без учета регистра
 					},
-					"distinctGroup": false // Не разделять группы
-				}
+					"distinctGroup": false, // Не разделять группы
+				},
 			],
 
 			// Дополнительные правила для импортов
@@ -160,9 +184,9 @@ const eslintConfig = [
 					"vars": "all", // Проверять все переменные
 					"varsIgnorePattern": "^_", // Игнорировать переменные начинающиеся с _
 					"args": "after-used", // Проверять аргументы после использования
-					"argsIgnorePattern": "^_" // Игнорировать аргументы начинающиеся с _
-				}
-			]
+					"argsIgnorePattern": "^_", // Игнорировать аргументы начинающиеся с _
+				},
+			],
 		},
 	},
 	{
@@ -175,6 +199,6 @@ const eslintConfig = [
 			"src/generated/**", // Игнорировать сгенерированные файлы
 		],
 	},
-]
+];
 
-export default eslintConfig
+export default eslintConfig;

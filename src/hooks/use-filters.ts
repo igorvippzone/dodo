@@ -1,6 +1,6 @@
-import { useState } from 'react'
-import { useSet } from 'react-use'
-import { useSearchParams } from 'next/navigation'
+import { useState } from "react";
+import { useSet } from "react-use";
+import { useSearchParams } from "next/navigation";
 
 interface PriceRangeProps {
 	priceFrom?: number
@@ -25,22 +25,22 @@ export interface ReturnProps extends Filters {
 	setIngredients: (value: string) => void,
 }
 export const useFilters = (): ReturnProps => {
-	const searchParams = useSearchParams() as unknown as Map<keyof QueryFilters, string>
+	const searchParams = useSearchParams() as unknown as Map<keyof QueryFilters, string>;
 
-	const [ingredients, { toggle: toggleIngredients }] = useSet(new Set<string>(searchParams.get('selectedIngredients')?.split(',') || []))
+	const [ingredients, { toggle: toggleIngredients }] = useSet(new Set<string>(searchParams.get("selectedIngredients")?.split(",") || []));
 
-	const [sizes, { toggle: toggleSizes }] = useSet(new Set<string>(searchParams.get('sizes')?.split(',') || []))
+	const [sizes, { toggle: toggleSizes }] = useSet(new Set<string>(searchParams.get("sizes")?.split(",") || []));
 
-	const [pizzaTypes, { toggle: togglePizzaTypes }] = useSet(new Set<string>(searchParams.get('pizzaTypes')?.split(',') || []))
+	const [pizzaTypes, { toggle: togglePizzaTypes }] = useSet(new Set<string>(searchParams.get("pizzaTypes")?.split(",") || []));
 
 	const [{ priceFrom, priceTo }, setPrices] = useState<PriceRangeProps>({
-		priceFrom: Number(searchParams.get('priceFrom')) || undefined,
-		priceTo: Number(searchParams.get('priceTo')) || undefined
-	})
+		priceFrom: Number(searchParams.get("priceFrom")) || undefined,
+		priceTo: Number(searchParams.get("priceTo")) || undefined,
+	});
 
 	const updatePrice = (name: keyof PriceRangeProps, value: number) => {
-		setPrices(prev => ({ ...prev, [name]: value }))
-	}
+		setPrices(prev => ({ ...prev, [name]: value }));
+	};
 
 	return {
 		sizes,
@@ -52,5 +52,5 @@ export const useFilters = (): ReturnProps => {
 		setPizzaTypes: togglePizzaTypes,
 		setSizes: toggleSizes,
 		setIngredients: toggleIngredients,
-	}
-}
+	};
+};

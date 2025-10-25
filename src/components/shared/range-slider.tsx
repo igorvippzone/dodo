@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
-import React, { useEffect, useState } from 'react'
-import * as SliderPrimitive from '@radix-ui/react-slider'
+import React, { useEffect, useState } from "react";
+import * as SliderPrimitive from "@radix-ui/react-slider";
 
-import { cn } from '@/lib/utils'
+import { cn } from "@/lib/utils";
 
 type SliderProps = {
 	className?: string
@@ -20,24 +20,24 @@ const RangeSlider = React.forwardRef<
 	React.ComponentPropsWithoutRef<typeof SliderPrimitive.Root> & SliderProps
 >(
 	({ className, min, max, step, formatLabel, value, onValueChange, ...props }, ref) => {
-		const initialValue = Array.isArray(value) ? value : [min, max]
-		const [localValues, setLocalValues] = useState(initialValue)
+		const initialValue = Array.isArray(value) ? value : [min, max];
+		const [localValues, setLocalValues] = useState(initialValue);
 
 		useEffect(() => {
-			setLocalValues(Array.isArray(value) ? value : [min, max])
-		}, [min, max, value])
+			setLocalValues(Array.isArray(value) ? value : [min, max]);
+		}, [min, max, value]);
 
 		const handleValueChange = (newValues: number[]) => {
-			setLocalValues(newValues)
+			setLocalValues(newValues);
 			if (onValueChange) {
-				onValueChange(newValues)
+				onValueChange(newValues);
 			}
-		}
+		};
 
 		return (
 			<SliderPrimitive.Root
 				ref={ref as React.RefObject<HTMLDivElement>}
-				className={cn('relative flex w-full touch-none select-none mb-6 items-center', className)}
+				className={cn("relative flex w-full touch-none select-none mb-6 items-center", className)}
 				max={max}
 				min={min}
 				step={step}
@@ -45,8 +45,8 @@ const RangeSlider = React.forwardRef<
 				onValueChange={handleValueChange}
 				{...props}
 			>
-				<SliderPrimitive.Track className='relative h-1 w-full grow overflow-hidden rounded-full bg-primary/20'>
-					<SliderPrimitive.Range className='absolute h-full bg-primary' />
+				<SliderPrimitive.Track className="relative h-1 w-full grow overflow-hidden rounded-full bg-primary/20">
+					<SliderPrimitive.Range className="absolute h-full bg-primary" />
 				</SliderPrimitive.Track>
 				{localValues.map((value, index) => (
 					<React.Fragment key={index}>
@@ -63,10 +63,10 @@ const RangeSlider = React.forwardRef<
 					</React.Fragment>
 				))}
 			</SliderPrimitive.Root>
-		)
-	}
-)
+		);
+	},
+);
 
-RangeSlider.displayName = SliderPrimitive.Root.displayName
+RangeSlider.displayName = SliderPrimitive.Root.displayName;
 
-export { RangeSlider }
+export { RangeSlider };

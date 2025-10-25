@@ -1,20 +1,20 @@
-import { Nunito } from "next/font/google"
+import { Nunito } from "next/font/google";
 
-import { Header } from '@/components/shared/header'
+import { Header } from "@/components/shared/header";
 
-import type { Metadata } from "next"
+import type { Metadata } from "next";
 
-import "./globals.css"
+import "./globals.css";
 
 const nunitoFont = Nunito({
 	subsets: ["cyrillic"],
 	variable: "--font-nunito",
-	weight: ['400', '500', '600', '700', '800', '900']
-})
+	weight: ["400", "500", "600", "700", "800", "900"],
+});
 
 export const metadata: Metadata = {
 	title: "DoDo",
-}
+};
 
 export default function RootLayout({
 	children,
@@ -24,11 +24,11 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body className={`${nunitoFont.className}`}>
-				<main className='min-h-screen'>
+				<main className="min-h-screen">
 					<Header />
 					{children}
 				</main>
 			</body>
 		</html>
-	)
+	);
 }
