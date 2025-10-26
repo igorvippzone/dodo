@@ -87,10 +87,9 @@ const eslintConfig = [
 				"maxBOF": 0,     // Не должно быть пустых строк в начале файла
 			}],
 
-			// Запрет пустых строк между атрибутами JSX
 			"react/jsx-newline": ["error", {
-				"prevent": true, // Запрещает пустые строки между атрибутами
-				"allowMultilines": false, // Запрещает пустые строки даже в многострочных атрибутах
+				prevent: false,
+				allowMultilines: false,
 			}],
 
 			// Правила переноса для многострочных JSX выражений

@@ -26,6 +26,7 @@ export default function RootLayout({
 			<body className={`${nunitoFont.className}`}>
 				<main className="min-h-screen">
 					<Header />
+
 					{children}
 				</main>
 			</body>

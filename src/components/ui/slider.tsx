@@ -49,6 +49,7 @@ function Slider({
 					)}
 				/>
 			</SliderPrimitive.Track>
+
 			{Array.from({ length: _values.length }, (_, index) => (
 				<SliderPrimitive.Thumb
 					key={index}

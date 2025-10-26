@@ -29,9 +29,11 @@ export const FilterCheckbox: React.FC<FilterCheckboxProps> = ({
 				value={value}
 				onCheckedChange={onCheckedChange}
 			/>
+
 			<label className="loading-none cursor-pointer flex-1" htmlFor={id}>
 				{label}
 			</label>
+
 			{endAdornment}
 		</div>
 	);

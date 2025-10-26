@@ -33,8 +33,8 @@ export const Filters: React.FC<Props> = ({ className }) => {
 			<Suspense fallback={<div>Loading filters...</div>}>
 
 				<Title className="mb-5 font-bold" text="Фильтрация" />
-				<CheckboxFiltersGroup
 
+				<CheckboxFiltersGroup
 					className="mb-5"
 					name="pizzaType"
 					selectedValues={filters.pizzaTypes}
@@ -45,6 +45,7 @@ export const Filters: React.FC<Props> = ({ className }) => {
 					]}
 					onClickCheckbox={filters.setPizzaTypes}
 				/>
+
 				<CheckboxFiltersGroup
 					className="mb-5"
 					name="size"
@@ -57,12 +58,14 @@ export const Filters: React.FC<Props> = ({ className }) => {
 					]}
 					onClickCheckbox={filters.setSizes}
 				/>
+
 				<div
 					key="1"
 					className="mt-5 border-y border-y-neutral-100 py-6 pb-7"
 					id="1"
 				>
 					<p className="font-bold mb-3">Цена от и до</p>
+
 					<div className="flex gap-3 mb-5">
 						<Input
 							max={max}
@@ -71,6 +74,7 @@ export const Filters: React.FC<Props> = ({ className }) => {
 							value={String(filters.priceFrom || min)}
 							onChange={e => filters.setPrices("priceFrom", Number(e.target.value))}
 						/>
+
 						<Input
 							max={max}
 							min={min}
@@ -79,6 +83,7 @@ export const Filters: React.FC<Props> = ({ className }) => {
 							onChange={e => filters.setPrices("priceTo", Number(e.target.value))}
 						/>
 					</div>
+
 					<RangeSlider
 						max={max}
 						min={min}
@@ -87,6 +92,7 @@ export const Filters: React.FC<Props> = ({ className }) => {
 						onValueChange={updatePrices}
 					/>
 				</div>
+
 				<CheckboxFiltersGroup
 					className="mt-5"
 					items={items}

@@ -28,18 +28,22 @@ export const ProductCard: React.FC<Props> = ({ className, id, name, price, image
 						width={215}
 					/>
 				</div>
+
 				<Title
 					className="mb-1 mt-3 font-bold"
 					size="sm"
 					text={name}
 				/>
+
 				<p className="text-sm text-gray-400">
 					Наш текст
 				</p>
+
 				<div className="flex justify-between items-center mt-4">
 					<span className="rext-[20px]">
 						от <b>{price} руб</b>
 					</span>
+
 					<Button className="text-base font-bold" variant="secondary">
 						<Plus className="mr-1" size={20} />
 						Добавить

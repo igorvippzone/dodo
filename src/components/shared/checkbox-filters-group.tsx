@@ -44,14 +44,17 @@ export const CheckboxFiltersGroup: React.FC<Props> = ({
 		return (
 			<div className={cn("mx-auto", className)}>
 				<Title className="mb-5 font-bold" text={title} />
+
 				<div className="flex flex-col gap-4 pr-2 mb-3 ">
 				{...new Array(limit).fill(0).map((_, index) => (
 					<div key={index} className="flex items-center gap-2">
 						<Skeleton className="h-6 w-6 rounded-[8px] shrink-0" />
+
 						<Skeleton className="h-4 w-full rounded-[8px]" />
 					</div>
 				))}
 				</div>
+
 				<Skeleton className="h-6 w-28 rounded-[8px]" />
 			</div>
 		);
@@ -62,6 +65,7 @@ export const CheckboxFiltersGroup: React.FC<Props> = ({
 	return (
 		<div className={cn("mx-auto max-w-[1200px]", className)}>
 			<Title className="mb-5 font-bold" text={title} />
+
 			{showAll && (
 				<div className="mb-5">
 					<Input
@@ -72,6 +76,7 @@ export const CheckboxFiltersGroup: React.FC<Props> = ({
 					/>
 				</div>
 			)}
+
 			<div className="flex flex-col gap-4 max-h-96 pr-2 overflow-auto scrollbar">
 				{list.map((item) => (
 					<FilterCheckbox
@@ -85,6 +90,7 @@ export const CheckboxFiltersGroup: React.FC<Props> = ({
 					/>
 				))}
 			</div>
+
 			{
 				items.length > limit && (
 					<div className={showAll ? "border-t border-t-neutral-100 mt-4" : ""}>
