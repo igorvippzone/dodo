@@ -1,10 +1,10 @@
-import { Prisma } from '@/generated/prisma'
+import { Prisma } from "@/generated/prisma";
 
-import { products } from './products'
+import { products } from "./products";
 
 const randomNumber = (min: number = 190, max: number = 600) => {
-	return Math.floor(Math.random() * (max - min) * 10 + min * 10) / 10
-}
+	return Math.floor(Math.random() * (max - min) * 10 + min * 10) / 10;
+};
 const generateProductItem = ({
 	productId,
 	pizzaType,
@@ -17,8 +17,8 @@ const generateProductItem = ({
 	productId,
 	price: randomNumber(),
 	pizzaType,
-	size
-} as Prisma.ProductItemUncheckedCreateInput)
+	size,
+} as Prisma.ProductItemUncheckedCreateInput);
 
 export const productItems = products.map(({ id }) => {
 	if (id === "1") {
@@ -26,7 +26,7 @@ export const productItems = products.map(({ id }) => {
 			generateProductItem({ productId: id, pizzaType: 1, size: 20 }),
 			generateProductItem({ productId: id, pizzaType: 2, size: 30 }),
 			generateProductItem({ productId: id, pizzaType: 2, size: 40 }),
-		]
+		];
 	} else if (id === "2") {
 		return [
 			generateProductItem({ productId: id, pizzaType: 1, size: 20 }),
@@ -35,17 +35,17 @@ export const productItems = products.map(({ id }) => {
 			generateProductItem({ productId: id, pizzaType: 2, size: 20 }),
 			generateProductItem({ productId: id, pizzaType: 2, size: 30 }),
 			generateProductItem({ productId: id, pizzaType: 2, size: 40 }),
-		]
+		];
 	} else if (id === "3") {
 		return [
 			generateProductItem({ productId: id, pizzaType: 1, size: 20 }),
 			generateProductItem({ productId: id, pizzaType: 2, size: 30 }),
 			generateProductItem({ productId: id, pizzaType: 2, size: 40 }),
-		]
+		];
 	} else {
-		return [generateProductItem({ productId: id })]
+		return [generateProductItem({ productId: id })];
 	}
 
 })
 	.flatMap(arr => arr)
-	.map((obj, index) => ({ ...obj, id: (index + 1) + '' }))
+	.map((obj, index) => ({ ...obj, id: (index + 1) + "" }));

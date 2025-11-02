@@ -1,20 +1,20 @@
-import type { NextConfig } from "next"
+import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
 	images: {
 
 		remotePatterns: [
 			{
-				protocol: 'https',
-				hostname: 'media.dodostatic.net',
-				port: '',
-				pathname: '/**',
+				protocol: "https",
+				hostname: "media.dodostatic.net",
+				port: "",
+				pathname: "/**",
 			},
 		],
 	},
 	experimental: {
-		serverComponentsExternalPackages: ['@prisma/client'],
+		serverComponentsExternalPackages: ["@prisma/client"],
 	},
-}
+};
 
-export default nextConfig
+export default nextConfig;
