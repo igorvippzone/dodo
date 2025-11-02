@@ -6,20 +6,15 @@ import Link from "next/link";
 import { Title } from "@/shared/components/shared/title";
 import { Button, Skeleton } from "@/shared/components/ui";
 import { cn } from "@/shared/lib/utils";
-import { MakeOptionalWhen } from "@/shared/types";
 
-	type Props = MakeOptionalWhen<
-  {
-    className?: string;
+type Props = {
+	  className?: string;
     skeleton?: boolean;
     id: string;
     name: string;
     price: number;
     imageUrl: string;
-  },
-  "skeleton",
-  "id" | "name" | "price" | "imageUrl"
->;
+}
 
 export const ProductCard: React.FC<Props> = ({ className, id, name, price, imageUrl, skeleton = false }: Props) => {
 	if(skeleton){
@@ -31,6 +26,7 @@ export const ProductCard: React.FC<Props> = ({ className, id, name, price, image
 					className="mb-1 mt-3"
 					size="sm"
 					skeleton={true}
+					text=""
 				/>
 
 				<Skeleton className="h-3.5"	/>

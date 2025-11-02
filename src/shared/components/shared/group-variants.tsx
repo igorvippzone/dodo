@@ -4,32 +4,42 @@ import React from "react";
 
 import { cn } from "@/shared/lib/utils";
 
-type Variant = {
+export interface Variant {
+	disabled?: boolean
 	name: string
 	value: string
-	disabled?: boolean
 }
 
-type Props = {
+interface Props {
+	className?: string
 	items: readonly Variant[]
 	onClick?: (value: Variant["value"]) => void
-	selectedValue?: Variant["value"]
-	className?: string
+	value?: Variant["value"]
 }
 
-export const GroupVariants: React.FC<Props> = ({ className, items, selectedValue,  onClick}) => {
+export const GroupVariants: React.FC<Props> = ({
+	className, items, onClick,  value,
+}) => {
 	return (
-		<div className={cn("flex justify-between bg-[#F3F3F3] rounded-3xl p-1 select-none", className)}>
+		<div className={cn(
+			"flex justify-between rounded-3xl bg-[#F3F3F3] p-1 select-none", className,
+		)}
+		>
 			{
-				items.map(item => (
+				items.map((item) => (
 					<button
 						key={item.value}
 						disabled={item.disabled}
-						className={cn("flex items-center justify-center cursor-pointer h-[30px] px-5 flex-1  rounded-3xl transition-all duration-400 text-sm", 
+						className={cn(
+							`
+         flex h-[30px] flex-1 cursor-pointer items-center justify-center
+         rounded-3xl px-5 text-sm transition-all duration-400
+       `, 
 							{
-								"bg-white shadow": selectedValue === item.value ,
-								"text-gray-500 opacity-50 pointer-events-none cursor-not-allowed": item.disabled,
-							})}
+								"bg-white shadow": value === item.value ,
+								"pointer-events-none cursor-not-allowed text-gray-500 opacity-50": item.disabled,
+							},
+						)}
 
 						onClick={()=>onClick?.(item.value)}
 					>

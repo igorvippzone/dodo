@@ -41,7 +41,7 @@ export default async function ProductPage() {
 						Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis tempore sequi mollitia soluta sint fuga amet consequuntur itaque alias, nam sed deserunt, provident incidunt aperiam ea at voluptates quis numquam?
 					</p>
 
-					<GroupVariants items={[{value: "1", disabled: true, name:"name 1"}, {value: "2", name:"name 2"},{value: "3", name:"name 3"}]} selectedValue="1"/>
+					<GroupVariants items={[{value: "1", disabled: true, name:"name 1"}, {value: "2", name:"name 2"},{value: "3", name:"name 3"}]} value="1"/>
 				</div>
 			</div>
 

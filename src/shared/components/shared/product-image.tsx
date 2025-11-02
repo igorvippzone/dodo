@@ -5,12 +5,12 @@ import Image from "next/image";
 
 import { cn } from "@/shared/lib/utils";
 
-type Props = {
+interface Props {
 	className?: string,
-	imageUrl: string,
-	size: 20 | 30 | 40,
-	name: string
 	enableChoose?: boolean
+	imageUrl: string,
+	name: string
+	size: 20 | 30 | 40,
 }
 const sizeConfig = {
 	20: 300,
@@ -18,13 +18,18 @@ const sizeConfig = {
 	40: 500,
 };
 
-export const ProductImage: React.FC<Props> = ({ className, imageUrl, name, size, enableChoose = true }) => {
+export const ProductImage: React.FC<Props> = ({
+	className, enableChoose = true, imageUrl, name, size, 
+}) => {
 
 	return (
-		<div className={cn("flex items-center justify-center flex-1 relative w-full", className)}>
+		<div className={cn(
+			"relative flex w-full flex-1 items-center justify-center", className,
+		)}
+		>
 			<Image 
 				alt={name}
-				className={cn("relative left-2 top-2 transition-all z-10 duration-300")}
+				className={cn("relative top-2 left-2 z-10 transition-all duration-300")}
 				height={sizeConfig[size]}
 				src={imageUrl}
 				width={sizeConfig[size]}
@@ -32,9 +37,17 @@ export const ProductImage: React.FC<Props> = ({ className, imageUrl, name, size,
 
 			{enableChoose && (
 				<>
-					<div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 border-dashed border-2 rounded-full border-gray-300 w-[450px] h-[450px]" />
+					<div className={`
+       absolute top-1/2 left-1/2 h-[450px] w-[450px] -translate-x-1/2
+       -translate-y-1/2 rounded-full border-2 border-dashed border-gray-300
+     `}
+					/>
 
-					<div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 border-dashed border-2 rounded-full border-gray-200 w-[370px] h-[370px]" />
+					<div className={`
+       absolute top-1/2 left-1/2 h-[370px] w-[370px] -translate-x-1/2
+       -translate-y-1/2 rounded-full border-2 border-dashed border-gray-200
+     `}
+					/>
 				</>
 			)}
 		</div>

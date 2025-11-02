@@ -5,7 +5,7 @@ export const products = [
 		name: "Пепперони фреш",
 		categoryId: "1",
 		ingredients: {
-			connect: ingredients.slice(0, 5),
+			connect: ingredients.slice(0, 9),
 		},
 	},
 	{

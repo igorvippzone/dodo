@@ -1,21 +1,10 @@
 import React from "react";
 
 import { cn } from "@/shared/lib/utils";
-import { MakeOptionalWhen } from "@/shared/types";
 
 import { Skeleton } from "../ui";
 
 type TitleSize = "xs" | "sm" | "md" | "lg" | "xl" | "2xl"
-type Props1 = MakeOptionalWhen<
-{	
-	size?: TitleSize
-	className?: string
-	text: string
-	skeleton?: boolean
-},
-	"skeleton",
-	"text"
->
 
 type Props ={	
 	className?: string
