@@ -33,7 +33,9 @@ export const SearchInput: FC<Props> = ({ className }) => {
 				console.error(error);
 			}
 		},
-		300, [searchQuery]);
+		300,
+		[searchQuery],
+	);
 
 	const onClickItem = () => {
 		setFocused(false);
@@ -52,7 +54,7 @@ export const SearchInput: FC<Props> = ({ className }) => {
 					placeholder="Найти пиццу..."
 					type="text"
 					value={searchQuery}
-					onChange={e => setSearchQuery(e.target.value)}
+					onChange={(e) => setSearchQuery(e.target.value)}
 					onFocus={() => setFocused(true)}
 				/>
 
@@ -62,7 +64,7 @@ export const SearchInput: FC<Props> = ({ className }) => {
 						focused && "visible opacity-100 top-12",
 					)}
 					>
-						{products.map(product => (
+						{products.map((product) => (
 							<Link
 								key={product.id}
 								className="flex items-center gap-3 px-3 py-2 hover:bg-primary/10"
@@ -77,7 +79,7 @@ export const SearchInput: FC<Props> = ({ className }) => {
 									width={32}
 								/>
 
-								<span >
+								<span>
 									{product.name}
 								</span>
 							</Link>

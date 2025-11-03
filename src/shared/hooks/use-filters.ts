@@ -46,9 +46,7 @@ export const useFilters = (): ReturnProps => {
 		priceTo: Number(searchParams.get("priceTo")) || undefined,
 	});
 
-	const updatePrice = (
-		name: keyof PriceRangeProps, value: number,
-	) => {
+	const updatePrice = (name: keyof PriceRangeProps, value: number) => {
 		setPrices((prev) => ({ ...prev, [name]: value }));
 	};
 

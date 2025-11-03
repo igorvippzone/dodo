@@ -60,7 +60,7 @@ export const CheckboxFiltersGroup: React.FC<Props> = ({
 		);
 	}
 
-	const list = showAll ? items.filter(item => item.label.toLowerCase().includes(searchValue.toLowerCase())) : items.slice(0, limit);
+	const list = showAll ? items.filter((item) => item.label.toLowerCase().includes(searchValue.toLowerCase())) : items.slice(0, limit);
 
 	return (
 		<div className={cn("mx-auto max-w-[1200px]", className)}>
@@ -96,12 +96,13 @@ export const CheckboxFiltersGroup: React.FC<Props> = ({
 					<div className={showAll ? "border-t border-t-neutral-100 mt-4" : ""}>
 						<button
 							className="text-primary mt-3"
-							onClick={() => setShowAll(prev => !prev)}
+							onClick={() => setShowAll((prev) => !prev)}
 						>
 							{showAll ? "Скрыть" : "+ Показать все"}
 						</button>
 					</div>
-				)}
+				)
+			}
 		</div>
 	);
 };

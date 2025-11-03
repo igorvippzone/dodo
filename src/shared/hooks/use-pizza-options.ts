@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useSet } from "react-use";
 
 import { ProductItem } from "@/generated/prisma";
@@ -28,16 +28,16 @@ export const usePizzaOptions = (items: ProductItem[]): ReturnProps => {
 	const [type, setType] = useState<PizzaType>(1);
 	const [selectedIngredients, { toggle: addIngredient }] = useSet(new Set<string>([]));
 
-	const availableSizes = getAvailablePizzaSizes(type, items);
+	const availableSizes = useMemo(() => getAvailablePizzaSizes(type, items), [items, type]); 
+	const isAvailableSize = useMemo(() => availableSizes?.find((item) => Number(item.value) === size && !item.disabled), [availableSizes, size]);
+	const availableSize = useMemo(() => availableSizes?.find((item) => !item.disabled), [availableSizes]);
 
-	useEffect(()=>{
-		const isAvailableSize = availableSizes?.find((item) => Number(item.value) === size && !item.disabled);
-		const availableSize = availableSizes?.find((item) => !item.disabled);
-
-		if(!isAvailableSize && availableSize){
+	useEffect(() => {
+	
+		if (!isAvailableSize && availableSize){
 			setSize(Number(availableSize.value) as PizzaSize);
 		}
-	}, [type]	);
+	}, [availableSize, isAvailableSize, type]);
 
 	return ({
 		size,
