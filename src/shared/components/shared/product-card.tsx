@@ -17,7 +17,7 @@ type Props = {
 }
 
 export const ProductCard: React.FC<Props> = ({ className, id, name, price, imageUrl, skeleton = false }: Props) => {
-	if(skeleton){
+	if (skeleton){
 		return (
 			<div  className={cn("", className)}>
 				<Skeleton className="h-[260px] w-full p-6"	/>

@@ -39,11 +39,10 @@ const cleanDatabase = async () => {
 };
 
 const creatingProducts = async () => {
-	const productCreations = products.map(product =>
+	const productCreations = products.map((product) =>
 		prisma.product.create({
 			data: product,
-		}),
-	);
+		}));
 
 	await prisma.$transaction(productCreations);
 };
@@ -73,11 +72,10 @@ const createProductItems = async () => {
 };
 
 const createCarts = async () => {
-	const cartsCreations = carts.map(cart =>
+	const cartsCreations = carts.map((cart) =>
 		prisma.cart.create({
 			data: cart,
-		}),
-	);
+		}));
 
 	await prisma.$transaction(cartsCreations);
 
@@ -107,15 +105,14 @@ export async function main() {
 			{ name: "Creating carts".padStart(length, character), task: createCarts },
 		];
 
-		const bars = steps.map(step =>
-			multibar.create(100, 0, { step: step.name }),
-		);
+		const bars = steps.map((step) =>
+			multibar.create(100, 0, { step: step.name }));
 
 		for (let i = 0; i < steps.length; i++) {
 			bars[i].update(30);
 			await steps[i].task();
 			bars[i].update(100);
-			await new Promise(resolve => setTimeout(resolve, 300));
+			await new Promise((resolve) => setTimeout(resolve, 300));
 		}
 		multibar.stop();
 		console.warn("✅ All seed tasks completed!");

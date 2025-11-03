@@ -2,9 +2,7 @@ import { Prisma } from "@/generated/prisma";
 
 import { products } from "./products";
 
-const randomNumber = (min: number = 190, max: number = 600) => {
-	return Math.floor(Math.random() * (max - min) * 10 + min * 10) / 10;
-};
+const randomNumber = (min: number = 190, max: number = 600) => Math.floor(Math.random() * (max - min) * 10 + min * 10) / 10;
 const generateProductItem = ({
 	productId,
 	pizzaType,
@@ -47,5 +45,5 @@ export const productItems = products.map(({ id }) => {
 	}
 
 })
-	.flatMap(arr => arr)
+	.flatMap((arr) => arr)
 	.map((obj, index) => ({ ...obj, id: (index + 1) + "" }));

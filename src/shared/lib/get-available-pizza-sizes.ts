@@ -12,7 +12,7 @@ import { pizzaSizes, PizzaType } from "../constants/pizza";
 export const getAvailablePizzaSizes = (type: PizzaType, items: ProductItem[]): Variant[] => {
 	const availablePizzas = items.filter((item) => item.pizzaType === type);
 	return pizzaSizes.map((item) => ({
-		disabled: !availablePizzas.some((pizza)=> pizza.size === Number(item.value)),
+		disabled: !availablePizzas.some((pizza) => pizza.size === Number(item.value)),
 		name: item.name,
 		value: item.value,
 	}));

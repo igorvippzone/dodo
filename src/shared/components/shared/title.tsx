@@ -32,7 +32,7 @@ export const Title: React.FC<Props> = ({ text, size = "sm", skeleton = false, cl
 		"2xl": "48px",
 	} as const;
 
-	if(skeleton){
+	if (skeleton){
 		return <Skeleton className={cn(`h-[${mapClassNameBySize[size]}]`, "w-full", className)} />;
 	}
 

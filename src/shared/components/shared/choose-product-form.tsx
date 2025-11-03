@@ -11,7 +11,7 @@ import { cn } from "@/shared/lib/utils";
 import { Button } from "../ui";
 import { GroupVariants } from "./group-variants";
 import { IngredientItem } from "./ingredient-item";
-import { ProductImage} from "./product-image";
+import { ProductImage } from "./product-image";
 import { Title } from "./title";
 
 interface Props {
@@ -25,21 +25,18 @@ interface Props {
 }
 
 export const ChooseProductForm: React.FC<Props> = ({
-	className, imageUrl, ingredients,isPizzaForm, items, name, onClickAddCart,
+	className, imageUrl, ingredients, isPizzaForm, items, name, onClickAddCart,
 }) => {
-	const { size, type, setSize, setType, addIngredient, selectedIngredients, availableSizes} = usePizzaOptions(items);
+	const { size, type, setSize, setType, addIngredient, selectedIngredients, availableSizes } = usePizzaOptions(items);
 
-	const {totalPrice, textDetails} = getPizzaDetails(type, size, items, ingredients, selectedIngredients);
+	const { totalPrice, textDetails } = getPizzaDetails({ type, size, items, ingredients, selectedIngredients });
 
-	const handleClickAdd = ()=>{
+	const handleClickAdd = () => {
 		onClickAddCart?.();
 	};
 	
 	return (
-		<div className={cn(
-			"flex flex-1", className,
-		)}
-		>
+		<div className={cn("flex flex-1", className)}>
 			<ProductImage
 				enableChoose={isPizzaForm}
 				imageUrl={imageUrl}
@@ -86,7 +83,7 @@ export const ChooseProductForm: React.FC<Props> = ({
 									imageUrl={ingredient.imageUrl}
 									name={ingredient.name}
 									price={ingredient.price}
-									onClick={()=> addIngredient(ingredient.id)}
+									onClick={() => addIngredient(ingredient.id)}
 								/>
 							))}
 						</div>

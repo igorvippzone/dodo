@@ -19,33 +19,31 @@ interface Props {
 
 export const IngredientItem: React.FC<Props> = ({
 	active, className, imageUrl, name, onClick, price, 
-}) => {
-	return (
-		<div
-			className={cn(
-				`
+}) => (
+	<div
+		className={cn(
+			`
       relative flex w-32 cursor-pointer flex-col items-center rounded-md
       bg-white p-1 text-center shadow-md
     `,
-				{
-					"grayscale-50": !active,
-				},
-				className,
-			)} 
-			onClick={onClick}
-		>
-			{active && <CircleCheck className="text-primary absolute top-2 right-2" />}
+			{
+				"grayscale-50": !active,
+			},
+			className,
+		)} 
+		onClick={onClick}
+	>
+		{active && <CircleCheck className="text-primary absolute top-2 right-2" />}
 
-			<Image
-				alt={name}
-				height={110}
-				src={imageUrl}
-				width={110}
-			/>
+		<Image
+			alt={name}
+			height={110}
+			src={imageUrl}
+			width={110}
+		/>
 
-			<span className="mb-1 text-xs">{name}</span>
+		<span className="mb-1 text-xs">{name}</span>
 
-			<span className="font-bold">{price} ₽</span>
-		</div>
-	);
-};
+		<span className="font-bold">{price} ₽</span>
+	</div>
+);

@@ -16,7 +16,7 @@ export default async function Home() {
 		},
 	});
 
-	const filterCategories = categories.filter(category => category.products.length > 0);
+	const filterCategories = categories.filter((category) => category.products.length > 0);
 
 	return (
 		<>
@@ -46,8 +46,7 @@ export default async function Home() {
 										items={category.products}
 										title={category.name}
 									/>
-								),
-								)}
+								))}
 							</div>
 						</div>
 					</div>
